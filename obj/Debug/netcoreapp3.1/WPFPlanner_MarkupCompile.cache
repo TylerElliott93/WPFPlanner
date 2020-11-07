@@ -1,5 +1,5 @@
 ﻿WPFPlanner
-1.0.0.0
+
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Tyler\source\repos\WPFPlanner\App.xaml
 31575012958
 
-7999367604
+5-1930694725
 1921654412462
 MainWindow.xaml;User Controls\TimelineItem.xaml;User Controls\TimePicker.xaml;
 

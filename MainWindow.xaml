@@ -3,10 +3,49 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFPlanner"
+        xmlns:uc="clr-namespace:WPFPlanner.User_Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--Day Start-->
+        <TextBlock Background="Teal" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Text="{Binding DayStartTime}"></TextBlock>
+        <!--Timeline-->
+        <StackPanel Background="LightPink" Grid.Row="2" Grid.RowSpan="2">
+            <ItemsControl Name="TimelineItemsControl"></ItemsControl>
+        </StackPanel>
+        <!--Day End-->
+        <TextBlock Background="Teal" Grid.Column="0" Grid.Row="4">DAY END</TextBlock>
+
+        <!--Header-->
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Header}"></TextBlock>
+        
+        <!--Input-->
+        <TextBox Background="HotPink" Grid.Row="1" Grid.Column="1" Name="TaskInputBox" Text="{Binding Path=Task, Mode=TwoWay}" KeyDown="TextBox_KeyDown"></TextBox>
+       
+        <!--Day Length Settings-->
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+            <uc:TimePicker x:Name="DayStartPicker" PickerHour="{Binding StartHour}" PickerMinute="{Binding StartMinute}"></uc:TimePicker>
+            <uc:TimePicker x:Name="DayEndPicker" PickerHour="{Binding EndHour}" PickerMinute="{Binding EndMinute}"></uc:TimePicker>
+            <TextBlock Text="{Binding DayStartTime}"></TextBlock>
+        </StackPanel>
+        
+        <!--Tasks View-->
+        <StackPanel Background="CornflowerBlue" Grid.Column="1" Grid.Row="3">
+
+        </StackPanel>
 
     </Grid>
 </Window>

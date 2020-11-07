@@ -1,0 +1,23 @@
+C:\Users\Tyler\source\repos\WPFPlanner\bin\Debug\netcoreapp3.1\WPFPlanner.exe
+C:\Users\Tyler\source\repos\WPFPlanner\bin\Debug\netcoreapp3.1\WPFPlanner.deps.json
+C:\Users\Tyler\source\repos\WPFPlanner\bin\Debug\netcoreapp3.1\WPFPlanner.runtimeconfig.json
+C:\Users\Tyler\source\repos\WPFPlanner\bin\Debug\netcoreapp3.1\WPFPlanner.runtimeconfig.dev.json
+C:\Users\Tyler\source\repos\WPFPlanner\bin\Debug\netcoreapp3.1\WPFPlanner.dll
+C:\Users\Tyler\source\repos\WPFPlanner\bin\Debug\netcoreapp3.1\WPFPlanner.pdb
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\User Controls\TimelineItem.g.cs
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\User Controls\TimePicker.g.cs
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner_MarkupCompile.cache
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner_MarkupCompile.lref
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\User Controls\TimelineItem.baml
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\User Controls\TimePicker.baml
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.g.resources
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.AssemblyInfoInputs.cache
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.AssemblyInfo.cs
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.csproj.CoreCompileInputs.cache
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.dll
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.pdb
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.genruntimeconfig.cache
