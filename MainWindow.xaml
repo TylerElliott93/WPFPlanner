@@ -5,47 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:WPFPlanner.User_Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1.3*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"></RowDefinition>
-            <RowDefinition Height="0.2*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <!--Day Start-->
-        <TextBlock Background="Teal" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Text="{Binding DayStartTime}"></TextBlock>
-        <!--Timeline-->
-        <StackPanel Background="LightPink" Grid.Row="2" Grid.RowSpan="2">
-            <ItemsControl Name="TimelineItemsControl"></ItemsControl>
-        </StackPanel>
         <!--Day End-->
-        <TextBlock Background="Teal" Grid.Column="0" Grid.Row="4">DAY END</TextBlock>
+        <uc:TimePicker Grid.Row="0"></uc:TimePicker>
+        <!--Timeline-->
+        <StackPanel Name="Timeline" Background="LightPink" Grid.Row="1" Grid.RowSpan="3" MaxHeight="700">
+            <ItemsControl ItemsSource="{Binding TimelineItems, UpdateSourceTrigger=PropertyChanged}"></ItemsControl>
+        </StackPanel>
+        <!--Day Start-->
+        <uc:TimePicker Grid.Row="4"></uc:TimePicker>
+        
 
         <!--Header-->
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Header}"></TextBlock>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBlock Text="{Binding Header}"></TextBlock>
+            <TextBlock Text="{Binding DayLength}"></TextBlock>
+        </StackPanel>
         
         <!--Input-->
         <TextBox Background="HotPink" Grid.Row="1" Grid.Column="1" Name="TaskInputBox" Text="{Binding Path=Task, Mode=TwoWay}" KeyDown="TextBox_KeyDown"></TextBox>
        
-        <!--Day Length Settings-->
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-            <uc:TimePicker x:Name="DayStartPicker" PickerHour="{Binding StartHour}" PickerMinute="{Binding StartMinute}"></uc:TimePicker>
-            <uc:TimePicker x:Name="DayEndPicker" PickerHour="{Binding EndHour}" PickerMinute="{Binding EndMinute}"></uc:TimePicker>
-            <TextBlock Text="{Binding DayStartTime}"></TextBlock>
-        </StackPanel>
-        
-        <!--Tasks View-->
-        <StackPanel Background="CornflowerBlue" Grid.Column="1" Grid.Row="3">
-
-        </StackPanel>
 
     </Grid>
 </Window>

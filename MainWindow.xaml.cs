@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -10,30 +11,107 @@ namespace WPFPlanner
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        //Properties
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public string Header { get; set; }
+        public string DayLength { get; set; }
 
-        public static DateTime DayStartTime { get; set; }
-        public static DateTime DayEndTime { get; set; }
+        public int DaySpanMins { get; set; }
+       
+        public DateTime DayStartTime { get; set; }
+        public DateTime DayEndTime { get; set; }
 
-        public List<TimelineItem> TimelineItems { get; set; }
+        public ObservableCollection<TimelineItem> TimelineItems { get; set; }
 
-        public int StartHour { get; set; }
-        public int StartMinute { get; set; }
+        private int startHour;
+        public int StartHour
+        {
+            get
+            {
+                return startHour;
+            }
+            set
+            {
+                startHour = value;
+                DayStartTime = UpdateDate(startHour, StartMinute);
+                OnPropertyChanged("DayStartTime");
+            }
+        }
 
-        public int EndHour { get; set; }
-        public int EndMinute { get; set; }
+        private int startMinute;
+        public int StartMinute
+        {
+            get
+            {
+                return startMinute;
+            }
+            set
+            {
+                startMinute = value;
+                DayStartTime = UpdateDate(startHour, startMinute);
+                OnPropertyChanged("DayStartTime");
+            }
+        }
+
+        private int endHour;
+        public int EndHour
+        {
+            get
+            {
+                return endHour;
+            }
+            set
+            {
+                endHour = value;
+                DayEndTime = UpdateDate(endHour, endMinute);
+
+
+                OnPropertyChanged("DayEndTime");
+            }
+        }
+
+        private int endMinute;
+        public int EndMinute
+        {
+            get
+            {
+                return endMinute;
+            }
+            set
+            {
+                endMinute = value;
+                DayEndTime = UpdateDate(endHour, endMinute);
+                OnPropertyChanged("DayEndTime");
+            }
+        }
 
         public string Task { get; set; }
+
+        public DateTime UpdateDate(int hour, int minute)
+        {
+            DayLength = (DayStartTime - DayEndTime).Hours.ToString();
+            OnPropertyChanged("DayLength");
+            return new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, hour, minute, 0);
+        }
 
         public MainWindow()
         {
             InitializeComponent();
 
+            ResizeMode = ResizeMode.NoResize;
+
+            TimelineItems = new ObservableCollection<TimelineItem>();
             Header = $"Today is {DateTime.Today.ToString("MMMM")} {DateTime.Today.Day}";
-            TimelineItems = new List<TimelineItem>();
+            DayLength = "8";
+
+            //TEST: 8hr Day Span
+            DaySpanMins = 480;
 
             this.DataContext = this;
         }
@@ -47,13 +125,21 @@ namespace WPFPlanner
         {
             if (e.Key == Key.Return)
             {
-                if (TimelineItemsControl.Items.Count <= 15)
+                if (TimelineItems.Count <= 15)
                 {
-                    TimelineItemsControl.Items.Add(new TimelineItem()
+                    var newHeight = Timeline.MaxHeight / (DaySpanMins / 60);
+                    Random r = new Random();
+                    int rInt = 3; //r.Next(1, 8); //for ints
+
+
+                    TimelineItems.Add(new TimelineItem()
                     {
-                        TaskTitle = TaskInputBox.Text
-                    }
-                    );
+                        TaskTitle = TaskInputBox.Text,
+                        TaskDuration = rInt,
+                        Height = newHeight * rInt
+                    });
+
+                    OnPropertyChanged("TimelineItems");
                     TaskInputBox.Text = String.Empty;
                 }
                 else

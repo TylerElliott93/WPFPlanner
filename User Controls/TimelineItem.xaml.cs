@@ -20,11 +20,14 @@ namespace WPFPlanner.User_Controls
     {
         public string TaskTitle { get; set; }
 
+        public int TaskDuration { get; set; }
+
         public TimelineItem()
         {
             InitializeComponent();
 
-            TaskTitle = "Your ass!";
+            //Default duration of 2hr
+            TaskDuration = 2;
 
             this.DataContext = this;
         }
