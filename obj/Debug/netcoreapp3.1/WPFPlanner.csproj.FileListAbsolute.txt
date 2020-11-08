@@ -21,3 +21,4 @@ C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.csproj
 C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.dll
 C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.pdb
 C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\WPFPlanner.genruntimeconfig.cache
+C:\Users\Tyler\source\repos\WPFPlanner\obj\Debug\netcoreapp3.1\App.baml

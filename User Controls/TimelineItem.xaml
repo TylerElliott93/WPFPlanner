@@ -4,35 +4,45 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFPlanner.User_Controls"
+             MinHeight="50"
+             MinWidth="350"
              mc:Ignorable="d" >
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"></RowDefinition>
-            <RowDefinition Height="0.5*"></RowDefinition>
-        </Grid.RowDefinitions>
-        
-        <!--Reorder Buttons-->
-        <Button Grid.RowSpan="2">UP</Button>
-        <Button Grid.Column="6" Grid.RowSpan="2">DOWN</Button>
-        
-        <!--Task Title-->
-        <TextBlock Background="Yellow" Grid.Column="1" Grid.ColumnSpan="5" Text="{Binding TaskTitle}"></TextBlock>
-        
-        <!--Duration and time controls-->
-        <Button Grid.Column="1" Grid.Row="1">-</Button>
-        <Button Name="ButtonMinIncrement" Grid.Column="2" Grid.Row="1">+</Button>
-        <TextBlock Background ="Orange" Grid.Column="3" Grid.Row="1" Text="{Binding TaskDuration}"></TextBlock>
-        <Button Grid.Column="4" Grid.Row="1">-</Button>
-        <Button Grid.Column="5" Grid.Row="1">+</Button>
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-    </Grid>
+            <!--Reorder Buttons-->
+            <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource TimelineItemButton}">↑↑</Button>
+            <Button Grid.Column="0" Grid.Row="1" Style="{StaticResource TimelineItemButton}">↓↓</Button>
+
+            <!--Delete Button-->
+            <Button Name="DeleteButton" Grid.Column="6" Grid.RowSpan="2" Click="DeleteButton_Click" Style="{StaticResource TimelineItemButton}">X</Button>
+
+            <!--Task Title-->
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="5" Text="{Binding TaskTitle}" Style="{StaticResource TimelineItemTextBlock}"></TextBlock>
+
+            <!--Duration and time controls-->
+            <Button Name="ButtonHourDecrement" Grid.Column="1" Grid.Row="1" Click="ButtonHourDecrement_Click" Style="{StaticResource TimelineItemButton}">-</Button>
+            <Button Name="ButtonHourIncrement" Grid.Column="2" Grid.Row="1" Click="ButtonHourIncrement_Click" Style="{StaticResource TimelineItemButton}">+</Button>
+
+            <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding TotalDuration}" Style="{StaticResource TimelineItemTextBlock}"></TextBlock>
+
+            <Button Name="ButtonMinuteDecrement" Grid.Column="4" Grid.Row="1" Click="ButtonMinuteDecrement_Click" Style="{StaticResource TimelineItemButton}">-</Button>
+            <Button Name="ButtonMinuteIncrement" Grid.Column="5" Grid.Row="1" Click="ButtonMinuteIncrement_Click" Style="{StaticResource TimelineItemButton}">+</Button>
+
+        </Grid>
+    </Border>
+    
 </UserControl>

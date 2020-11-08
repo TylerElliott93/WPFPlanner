@@ -6,10 +6,10 @@
         xmlns:uc="clr-namespace:WPFPlanner.User_Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="800">
-    <Grid>
+    <Grid Background="#2ed573" Margin="1">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.3*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="350"></ColumnDefinition>
+            <ColumnDefinition Width="450"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
@@ -23,7 +23,7 @@
         <!--Day End-->
         <uc:TimePicker Grid.Row="0"></uc:TimePicker>
         <!--Timeline-->
-        <StackPanel Name="Timeline" Background="LightPink" Grid.Row="1" Grid.RowSpan="3" MaxHeight="700">
+        <StackPanel Name="TimelineStackPanel" Background="White" Grid.Row="1" Grid.RowSpan="3" MaxHeight="700">
             <ItemsControl ItemsSource="{Binding TimelineItems, UpdateSourceTrigger=PropertyChanged}"></ItemsControl>
         </StackPanel>
         <!--Day Start-->
@@ -37,8 +37,7 @@
         </StackPanel>
         
         <!--Input-->
-        <TextBox Background="HotPink" Grid.Row="1" Grid.Column="1" Name="TaskInputBox" Text="{Binding Path=Task, Mode=TwoWay}" KeyDown="TextBox_KeyDown"></TextBox>
+        <TextBox Background="#2ed573" Grid.Row="1" Grid.Column="1" Name="TaskInputBox" Text="{Binding Path=Task, Mode=TwoWay}" KeyDown="TextBox_KeyDown"></TextBox>
        
-
     </Grid>
 </Window>

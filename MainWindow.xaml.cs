@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 using WPFPlanner.User_Controls;
@@ -17,17 +19,18 @@ namespace WPFPlanner
         public void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            RecalculateSizing();
         }
 
         public string Header { get; set; }
-        public string DayLength { get; set; }
-
-        public int DaySpanMins { get; set; }
+        
+        public static int DaySpanMins { get; set; }
+        public static int AllocatedMins { get; set; }
        
         public DateTime DayStartTime { get; set; }
         public DateTime DayEndTime { get; set; }
 
-        public ObservableCollection<TimelineItem> TimelineItems { get; set; }
+        public static ObservableCollection<TimelineItem> TimelineItems { get; set; }
 
         private int startHour;
         public int StartHour
@@ -95,7 +98,6 @@ namespace WPFPlanner
 
         public DateTime UpdateDate(int hour, int minute)
         {
-            DayLength = (DayStartTime - DayEndTime).Hours.ToString();
             OnPropertyChanged("DayLength");
             return new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, hour, minute, 0);
         }
@@ -108,10 +110,10 @@ namespace WPFPlanner
 
             TimelineItems = new ObservableCollection<TimelineItem>();
             Header = $"Today is {DateTime.Today.ToString("MMMM")} {DateTime.Today.Day}";
-            DayLength = "8";
 
             //TEST: 8hr Day Span
             DaySpanMins = 480;
+            AllocatedMins = 0;
 
             this.DataContext = this;
         }
@@ -127,20 +129,15 @@ namespace WPFPlanner
             {
                 if (TimelineItems.Count <= 15)
                 {
-                    var newHeight = Timeline.MaxHeight / (DaySpanMins / 60);
-                    Random r = new Random();
-                    int rInt = 3; //r.Next(1, 8); //for ints
-
-
                     TimelineItems.Add(new TimelineItem()
                     {
-                        TaskTitle = TaskInputBox.Text,
-                        TaskDuration = rInt,
-                        Height = newHeight * rInt
+                        TaskTitle = TaskInputBox.Text
                     });
 
-                    OnPropertyChanged("TimelineItems");
                     TaskInputBox.Text = String.Empty;
+                    AllocatedMins += 60;
+
+                    OnPropertyChanged("TimelineItems");
                 }
                 else
                 {
@@ -149,5 +146,15 @@ namespace WPFPlanner
                 
             }
         }
+
+        public void RecalculateSizing()
+        {
+            foreach (var item in TimelineItems)
+            {
+                //MessageBox.Show(item.TaskDurationMins.ToString());
+            }
+        }
+
+
     }
 }
